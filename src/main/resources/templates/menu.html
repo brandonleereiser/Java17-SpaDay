@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <title>Spa Menu</title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<!--TODO: Use th:if to bring in the appropriate fragment.-->
+<h1>My Super Fancy Spa</h1>
+
+<div id = "clientProfile">
+    <h2>My Profile</h2>
+    <p th:text="${name}"></p>
+    <p th:text="${skintype}"></p>
+    <p th:if="$manipedi == 'manicure" th:replace="fragments :: manicureDescription"></p>
+    <p th:if="$manipedi == 'pedicure" th:replace="fragments :: pedicureDescription"></p>
+    <p th:text="${manipedi}"></p>
+</div>
+<div id = "servicesMenu">
+    <ol>
+        <th:block th:each="facial : ${appropriateFacials}">
+            <p th:text="${facial}">Info</p>
+        </th:block>
+    </ol>
+</div>
+</body>
+</html>
